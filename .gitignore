@@ -1,0 +1,9 @@
+*.gz
+
+.env 
+
+.DS_Store
+
+/dataset 
+/__pycache__
+/src 

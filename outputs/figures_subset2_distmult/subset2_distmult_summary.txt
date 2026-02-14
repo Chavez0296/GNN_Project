@@ -1,0 +1,24 @@
+Subset 2 DistMult Summary
+
+Model: distmult
+Epochs: 30
+
+Test mean metrics:
+- MRR: 0.765042
+- Hits@1: 0.662787
+- Hits@3: 0.845721
+- Hits@10: 0.941700
+
+Seed stability (test MRR):
+- mean: 0.765042
+- std: 0.001600
+- min: 0.763797
+- max: 0.767301
+
+Relation-level (test MRR mean across seeds):
+- count: 51
+- mean: 0.586581
+- std: 0.172618
+- min: 0.185896
+- median: 0.557572
+- max: 0.977590
