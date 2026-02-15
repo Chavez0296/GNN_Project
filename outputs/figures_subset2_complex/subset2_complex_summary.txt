@@ -1,0 +1,24 @@
+Subset 2 Complex Summary
+
+Model: complex
+Epochs: 30
+
+Test mean metrics:
+- MRR: 0.785826
+- Hits@1: 0.691891
+- Hits@3: 0.861115
+- Hits@10: 0.945582
+
+Seed stability (test MRR):
+- mean: 0.785826
+- std: 0.000971
+- min: 0.785120
+- max: 0.787200
+
+Relation-level (test MRR mean across seeds):
+- count: 51
+- mean: 0.601113
+- std: 0.175112
+- min: 0.187182
+- median: 0.553645
+- max: 0.981277
