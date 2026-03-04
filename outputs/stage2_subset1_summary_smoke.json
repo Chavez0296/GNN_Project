@@ -1,0 +1,120 @@
+{
+  "stage": "stage2_subset1_candidate_generation",
+  "generator_model": "complex",
+  "target_split": "test",
+  "k_values": [
+    50
+  ],
+  "device": "cuda",
+  "train_info": {
+    "best_valid_mrr_proxy": 0.17366614692733856,
+    "history": [
+      {
+        "epoch": 1,
+        "train_loss": 1.0677644877933985,
+        "valid_mrr": 0.11589460745011457
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.5498945401438535,
+        "valid_mrr": 0.17366614692733856
+      }
+    ]
+  },
+  "summary": {
+    "num_queries": 20,
+    "coverage_overall": {
+      "recall@50": 0.05
+    },
+    "coverage_by_relation_frequency": {
+      "rare": {
+        "recall@50": 0.0
+      },
+      "medium": {
+        "recall@50": 0.0
+      },
+      "frequent": {
+        "recall@50": 0.05
+      }
+    },
+    "coverage_by_degree": {
+      "low": {
+        "recall@50": 0.0
+      },
+      "medium": {
+        "recall@50": 0.0
+      },
+      "high": {
+        "recall@50": 0.0625
+      }
+    },
+    "relation_bucket_sizes": {
+      "rare": 0,
+      "medium": 0,
+      "frequent": 20
+    },
+    "degree_bucket_sizes": {
+      "low": 1,
+      "medium": 3,
+      "high": 16
+    },
+    "relation_counts": {
+      "0": 73547,
+      "1": 5147,
+      "2": 63430,
+      "3": 18554,
+      "4": 30348,
+      "5": 48514,
+      "6": 94842,
+      "7": 316,
+      "8": 34660,
+      "9": 128,
+      "10": 14314,
+      "11": 55994,
+      "12": 36114,
+      "13": 83210,
+      "14": 79202,
+      "15": 3006,
+      "16": 292,
+      "17": 34242,
+      "18": 36492,
+      "19": 73902,
+      "20": 8528,
+      "21": 600,
+      "22": 57926,
+      "23": 80208,
+      "24": 380,
+      "25": 1680,
+      "26": 972,
+      "27": 514,
+      "28": 3224,
+      "29": 2014,
+      "30": 17006,
+      "31": 82168,
+      "32": 1260,
+      "33": 25860,
+      "34": 2214,
+      "35": 26348,
+      "36": 4392,
+      "37": 4660,
+      "38": 67326,
+      "39": 38846,
+      "40": 117930,
+      "41": 157479,
+      "42": 1433230,
+      "43": 777577,
+      "44": 73044,
+      "45": 292254,
+      "46": 303434,
+      "47": 1952,
+      "48": 25732,
+      "49": 15120,
+      "50": 352546
+    }
+  },
+  "outputs": {
+    "candidates_jsonl": "outputs/stage2_subset1_candidates_smoke.jsonl",
+    "summary_json": "outputs/stage2_subset1_summary_smoke.json",
+    "checkpoint": "outputs/stage2_subset1_best_model_smoke.pt"
+  }
+}
