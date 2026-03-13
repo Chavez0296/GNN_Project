@@ -1,4 +1,7 @@
 import dataclasses
+import csv
+import gzip
+import os
 from typing import Dict, List, Tuple
 
 import numpy as np
@@ -15,6 +18,7 @@ class BioKGContext:
     num_nodes_by_type: Dict[str, int]
     num_entities: int
     num_relations: int
+    dataset_root: str
 
 
 def load_biokg() -> BioKGContext:
@@ -39,7 +43,34 @@ def load_biokg() -> BioKGContext:
         num_nodes_by_type={k: int(v) for k, v in data["num_nodes_dict"].items()},
         num_entities=cursor,
         num_relations=num_relations,
+        dataset_root=dataset.root,
     )
+
+
+def load_name_mappings(dataset_root: str, offsets: Dict[str, int]) -> Tuple[Dict[int, str], Dict[int, str]]:
+    mapping_dir = os.path.join(dataset_root, "mapping")
+    entity_names: Dict[int, str] = {}
+    relation_names: Dict[int, str] = {}
+
+    for type_name, offset in offsets.items():
+        file_name = f"{type_name}_entidx2name.csv.gz"
+        path = os.path.join(mapping_dir, file_name)
+        if not os.path.exists(path):
+            continue
+        with gzip.open(path, "rt", encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                local_id = int(row["ent idx"])
+                entity_names[offset + local_id] = row["ent name"]
+
+    rel_path = os.path.join(mapping_dir, "relidx2relname.csv.gz")
+    if os.path.exists(rel_path):
+        with gzip.open(rel_path, "rt", encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                relation_names[int(row["rel idx"])] = row["rel name"]
+
+    return entity_names, relation_names
 
 
 def _to_numpy(x):

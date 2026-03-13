@@ -48,3 +48,18 @@ python stage1_subset4_diagnostics.py --max_test_samples 1500 --template_examples
 - `outputs/stage1_subset4_diagnostics.md`
 
 The JSON output contains structured slices and error records. The Markdown file is a quick readable summary.
+
+## Development Path
+
+1. Built relation-frequency slicing across Stage 1 baseline outputs.
+2. Added degree-slice diagnostics centered on the heuristic baseline.
+3. Added structured error extraction for high-confidence false positives and false negatives.
+4. Initial diagnostic mining was too slow because it reused heavier heuristic template logic directly.
+5. Patched the diagnostic script with a faster template-mining path and sampled-train-edge option for practical runtime.
+6. Generated both machine-readable JSON and concise Markdown summaries for reporting.
+
+## Key Practical Lessons
+
+- Rare relations and low-degree entities were the clearest persistent failure slices.
+- Hub bias and missing supporting paths emerged as the dominant heuristic failure modes.
+- These diagnostics directly shaped Stage 2 design choices and evaluation slices.

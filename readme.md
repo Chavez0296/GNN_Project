@@ -107,3 +107,25 @@ Main outputs:
 - `outputs/stage2_subset1_candidates.jsonl`
 - `outputs/stage2_subset1_summary.json`
 - `outputs/stage2_subset1_best_model.pt`
+
+## Stage 2 - Subset 2 (3-hop hybrid evidence retrieval)
+
+```bash
+python stage2_subset2_evidence_retrieval.py
+```
+
+Main outputs:
+
+- `outputs/stage2_subset2_evidence.jsonl`
+- `outputs/stage2_subset2_summary.json`
+
+## Stage 2 - Subset 3 (LLM reranker with grounding)
+
+```bash
+python stage2_subset3_llm_reranker.py --evidence_in outputs/stage2_subset2_evidence.jsonl --model gemini-3.1 --max_queries 500
+```
+
+Main outputs:
+
+- `outputs/stage2_subset3_rerank.json`
+- `outputs/stage2_subset3_rerank_queries.jsonl`

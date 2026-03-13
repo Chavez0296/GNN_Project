@@ -62,3 +62,19 @@ python stage1_subset3_gnn.py --no_plots
 
 - The implementation uses edge and positive-triple sampling per epoch to keep memory/runtime practical on BioKG.
 - The output JSON includes training configuration, per-seed metrics, means, and per-relation breakdowns.
+
+## Development Path
+
+1. Started with an R-GCN baseline and required ablation hooks (relation collapse and alternate negative sampling).
+2. Added learning-curve tracking and figure generation for train loss and validation metrics.
+3. Initial training underfit badly because the loop performed too little effective optimization per epoch.
+4. Patched training to use proper mini-batch updates, larger per-epoch positive budgets, and clearer device logging.
+5. Stabilized the encoder with residual connections and layer normalization after early runs produced near-random performance.
+6. Re-ran the baseline and ablations to obtain meaningful Stage 1 results.
+7. Used the final baseline outputs in Stage 1 Subset 4 diagnostics and Stage 2 work distribution planning.
+
+## Key Practical Lessons
+
+- The first naive R-GCN training loop was not competitive enough for BioKG.
+- Small architecture and optimization changes mattered a lot more than expected.
+- Once stabilized, the R-GCN became a valid baseline, but KGE models still remained stronger.
